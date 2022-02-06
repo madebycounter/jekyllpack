@@ -1,0 +1,7 @@
+title: Template
+email: william@madebycounter.com
+description: Internal Jekyll template for Counter web development
+
+# build settings
+source: src
+destination: public
