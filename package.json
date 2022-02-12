@@ -2,7 +2,10 @@
     "name": "jekyllpack",
     "version": "1.0.0",
     "description": "Jekyll and Webpack :^)",
-    "scripts": {},
+    "scripts": {
+        "build": "npx webpack build",
+        "serve": "npx webpack serve"
+    },
     "author": {
         "name": "William Gardner",
         "email": "william@madebycounter.com"
