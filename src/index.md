@@ -3,6 +3,6 @@ layout: default
 title: Home
 ---
 
-# Hello, World!
+# Hello, world!
 
 This is a template project for rapid Jekyll development.

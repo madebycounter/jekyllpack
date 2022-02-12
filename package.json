@@ -1,20 +1,18 @@
 {
-    "name": "jekyll-template",
+    "name": "jekyllpack",
     "version": "1.0.0",
-    "description": "Internal Jekyll template for Counter web development",
-    "scripts": {
-        "serve": "webpack serve",
-        "build": "webpack"
+    "description": "Jekyll and Webpack :^)",
+    "scripts": {},
+    "author": {
+        "name": "William Gardner",
+        "email": "william@madebycounter.com"
     },
-    "authors": [
-        {
-            "name": "William Gardner",
-            "email": "william@madebycounter.com"
-        }
-    ],
-    "dependencies": {},
     "devDependencies": {
+        "css-loader": "^6.6.0",
         "prettier": "^2.5.1",
+        "sass": "^1.49.7",
+        "sass-loader": "^12.4.0",
+        "style-loader": "^3.3.1",
         "ts-loader": "^9.2.6",
         "typescript": "^4.5.5",
         "webpack": "^5.68.0",
