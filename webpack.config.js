@@ -1,7 +1,8 @@
 const WatchExternalFilesPlugin = require("webpack-watch-files-plugin").default;
 const WebpackJekyllPlugin = require("./webpack-jekyll-plugin.js");
-const path = require("path");
 const jekyllpackConfig = require("./jekyllpack.config.json");
+const webpack = require("webpack");
+const path = require("path");
 
 module.exports = {
     mode: jekyllpackConfig.mode,
@@ -12,6 +13,9 @@ module.exports = {
         path: path.resolve(__dirname, "src/assets/js"),
         filename: "bundle.js",
         publicPath: "/assets/js/",
+    },
+    resolve: {
+        extensions: [".ts", ".js", ".json"],
     },
     module: {
         rules: [
@@ -29,6 +33,10 @@ module.exports = {
         port: jekyllpackConfig.port,
     },
     plugins: [
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jquery: "jquery",
+        }),
         new WatchExternalFilesPlugin({
             files: ["./src/**", "!./src/assets/js/bundle.js"],
         }),
