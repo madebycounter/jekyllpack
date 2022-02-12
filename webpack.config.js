@@ -1,12 +1,14 @@
 const WatchExternalFilesPlugin = require("webpack-watch-files-plugin").default;
 const WebpackJekyllPlugin = require("./webpack-jekyll-plugin.js");
 const path = require("path");
+const jekyllpackConfig = require("./jekyllpack.config.json");
 
 module.exports = {
-    mode: "none",
+    mode: jekyllpackConfig.mode,
+    devtool: "source-map",
     entry: ["./src/_script/main.ts", "./src/_style/main.scss"],
     output: {
-        library: "TS",
+        library: jekyllpackConfig.library,
         path: path.resolve(__dirname, "src/assets/js"),
         filename: "bundle.js",
         publicPath: "/assets/js/",
@@ -24,12 +26,16 @@ module.exports = {
         ],
     },
     devServer: {
-        port: 4000,
+        port: jekyllpackConfig.port,
     },
     plugins: [
         new WatchExternalFilesPlugin({
             files: ["./src/**", "!./src/assets/js/bundle.js"],
         }),
-        new WebpackJekyllPlugin(),
+        new WebpackJekyllPlugin(
+            jekyllpackConfig.platform == "windows"
+                ? "buildJekyll.bat"
+                : "buildJekyll.sh"
+        ),
     ],
 };

@@ -2,8 +2,9 @@ const { spawn } = require("child_process");
 const { NoEmitOnErrorsPlugin } = require("webpack");
 
 class WebpackJekyllPlugin {
-    constructor() {
+    constructor(script) {
         this.running = false;
+        this.script = script;
         this.data = "";
         this.error = "";
     }
@@ -14,7 +15,7 @@ class WebpackJekyllPlugin {
         compiler.hooks.beforeCompile.tapAsync(
             "WebpackJekyllPlugin",
             (compilation, callback) => {
-                var proc = spawn("buildJekyll.bat");
+                var proc = spawn(this.script);
                 this.running = true;
                 this.data = "";
                 this.error = "";
